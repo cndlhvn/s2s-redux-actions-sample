@@ -9,7 +9,8 @@
     "react-router": "v3",
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
-    "redux-actions": "^2.2.1"
+    "redux-actions": "^2.2.1",
+    "redux-saga": "^0.16.0"
   },
   "devDependencies": {
     "react-scripts": "1.0.17"
