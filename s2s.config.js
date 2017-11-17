@@ -34,6 +34,10 @@ module.exports = {
       output: "index.js",
       plugin: ['s2s-redux-sagas-root',
       { input: 'src/sagas/*.js', output: "src/sagas/index.js" }]
+    },
+    {
+      test: /src\/api\/(?!.*index).*\.js/,
+      plugin: ['s2s-axios-api']
     }
   ],
   templates: [
@@ -48,6 +52,9 @@ module.exports = {
     },
     {
       test: /src\/containers\/.*\.js/, input: 'container.js'
+    },
+    {
+      test: /src\/api\/.*\.js/, input: 'axios-api.js'
     }
   ]
 }
