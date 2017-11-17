@@ -2,9 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import * as actions from '../actions'
 
 class CoinsIndex extends Component{
+  componentDidMount() {
+    this.props.getCoinsRequest()
+  }
   render () {
+    const { coins } = this.props.coins
     return (
       <div className="App">
         <header className="App-header">
@@ -18,6 +23,11 @@ class CoinsIndex extends Component{
   }
 }
 
-const mapStateToProps = (state, ownProps) => { return {}}
-const mapDispatchToProps = dispatch => bindActionCreators({},  dispatch)
+const mapStateToProps = (state, ownProps) => { return {
+ coins: state.coins
+}}
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getCoinsRequest: bindActionCreators( actions.getCoinsRequest, dispatch)
+},  dispatch)
+
 export default connect(mapStateToProps, mapDispatchToProps)(CoinsIndex)
