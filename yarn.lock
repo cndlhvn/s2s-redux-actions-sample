@@ -643,9 +643,9 @@ babel-plugin-s2s-redux-actions-reducers@^0.0.3:
     babel-types "^6.26.0"
     s2s-utils "^0.4.2"
 
-babel-plugin-s2s-redux-actions-root@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-s2s-redux-actions-root/-/babel-plugin-s2s-redux-actions-root-0.0.1.tgz#cbf2b5d5d87219d3b4104a4e6a92d8b72216b54d"
+babel-plugin-s2s-redux-actions-root@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/babel-plugin-s2s-redux-actions-root/-/babel-plugin-s2s-redux-actions-root-0.0.2.tgz#89908501dd87547089ace9d0985803be9a390004"
   dependencies:
     babel-preset-es2015 "^6.24.1"
     babel-types "^6.26.0"

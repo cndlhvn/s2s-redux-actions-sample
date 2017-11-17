@@ -17,7 +17,7 @@
     "babel-plugin-s2s-redux-actions": "^0.0.3",
     "babel-plugin-s2s-redux-actions-reducers": "^0.0.3",
     "babel-plugin-s2s-redux-actions-reducers-root": "^0.0.3",
-    "babel-plugin-s2s-redux-actions-root": "^0.0.1",
+    "babel-plugin-s2s-redux-actions-root": "^0.0.2",
     "babel-plugin-s2s-redux-sagas": "^0.0.3",
     "babel-plugin-s2s-redux-sagas-root": "^0.0.2",
     "react-scripts": "1.0.17",
