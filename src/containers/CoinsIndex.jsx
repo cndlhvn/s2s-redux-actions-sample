@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Table } from 'react-bootstrap';
+import styled from 'styled-components'
 import * as actions from '../actions'
 
 class CoinsIndex extends Component{
@@ -10,24 +12,57 @@ class CoinsIndex extends Component{
   }
   render () {
     const { coins } = this.props.coins
+
+    const data = coins.map(({ id, name, price_usd, price_btc }) => {
+      return(
+        <tr key={id}>
+          <td>{name}</td>
+          <td>{price_usd}</td>
+          <td>{price_btc}</td>
+        </tr>
+      )
+    })
     return (
-      <div className="App">
+      <Wrapper>
         <header className="App-header">
           <h1 className="App-title">Coins Index</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+        <div>
+          <Table striped bordered condensed hover>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Price USD</th>
+                <th>Price BTC</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data}
+            </tbody>
+          </Table>
+        </div>
+      </Wrapper>
     )
   }
 }
 
-const mapStateToProps = (state, ownProps) => { return {
- coins: state.coins
-}}
-const mapDispatchToProps = dispatch => bindActionCreators({
-  getCoinsRequest: bindActionCreators( actions.getCoinsRequest, dispatch)
-},  dispatch)
+CoinsIndex.propTypes = {
+  coins: PropTypes.object.isRequired
+}
+
+const Wrapper = styled.div`
+  margin: 25px 40px;
+`
+const mapStateToProps = (state, ownProps) => {
+  return {
+    coins: state.coins
+  }
+}
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    getCoinsRequest: bindActionCreators( actions.getCoinsRequest, dispatch)
+  },
+  dispatch
+)
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinsIndex)
