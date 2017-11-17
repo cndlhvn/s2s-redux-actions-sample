@@ -45,6 +45,9 @@ module.exports = {
     },
     {
       test: /src\/sagas\/.*\.js/, input: 'saga.js'
+    },
+    {
+      test: /src\/containers\/.*\.js/, input: 'container.js'
     }
   ]
 }
