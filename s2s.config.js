@@ -23,7 +23,7 @@ module.exports = {
        output: "index.js",
        handler: handlerBabelSpread,
        plugin: ['s2s-redux-actions-reducers-root',
-       { input: 'src/reducers/*.js', output: "src/reducers/index.js" }]
+       { input: 'src/reducers/*.js', output: "src/reducers/index.js",router: true }]
      },
     {
        test: /src\/sagas\/(?!.*index).*\.js/,
