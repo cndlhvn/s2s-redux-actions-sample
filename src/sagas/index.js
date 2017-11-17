@@ -1,6 +1,5 @@
-import { all, put, call, takeLatest } from 'redux-saga/effects'
-import * as actions from '../actions';
-
+import { all } from "redux-saga/effects";
+import coins from "./coins";
 export default function* rootSaga() {
-  yield all([])
+  yield all([...coins]);
 }
