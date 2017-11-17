@@ -13,7 +13,15 @@
     "redux-saga": "^0.16.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.17"
+    "babel-plugin-s2s-redux-actions": "^0.0.3",
+    "babel-plugin-s2s-redux-actions-reducers": "^0.0.3",
+    "babel-plugin-s2s-redux-actions-reducers-root": "^0.0.2",
+    "babel-plugin-s2s-redux-actions-root": "^0.0.1",
+    "babel-plugin-s2s-redux-sagas": "^0.0.3",
+    "babel-plugin-s2s-redux-sagas-root": "^0.0.2",
+    "react-scripts": "1.0.17",
+    "s2s": "^0.13.0",
+    "s2s-handler-babel-object-rest-spread": "^0.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
