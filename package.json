@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "babel-plugin-s2s-redux-actions": "^0.0.3",
-    "babel-plugin-s2s-redux-actions-reducers": "^0.0.3",
+    "babel-plugin-s2s-redux-actions-reducers": "^0.0.4",
     "babel-plugin-s2s-redux-actions-reducers-root": "^0.0.3",
     "babel-plugin-s2s-redux-actions-root": "^0.0.2",
     "babel-plugin-s2s-redux-sagas": "^0.0.3",
