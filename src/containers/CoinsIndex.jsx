@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
 import styled from 'styled-components'
 import { getCoinsRequest } from '../actions'
+import { Link } from 'react-router';
 
 class CoinsIndex extends Component{
   componentDidMount() {
@@ -16,7 +17,7 @@ class CoinsIndex extends Component{
     const data = coins.map(({ id, name, price_usd, price_btc }) => {
       return(
         <tr key={id}>
-          <td>{name}</td>
+          <td><Link to={`/coins/${id}`}>{name}</Link></td>
           <td>{price_usd}</td>
           <td>{price_btc}</td>
         </tr>
