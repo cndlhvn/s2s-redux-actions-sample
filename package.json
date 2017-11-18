@@ -1,6 +1,7 @@
 {
   "name": "s2s-redux-actions-sample",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
