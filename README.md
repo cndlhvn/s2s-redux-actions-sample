@@ -1,8 +1,11 @@
 # About
 This is a smaple s2s redux actions project.
 
-And This is a tutorial how to use redux actions s2s. This tutorial will explain how to create redux application with s2s.
+And This is a tutorial how to use redux actions s2s. \
+This tutorial will explain how to create redux application with s2s.
 
+This repository contains a tutorial and its finished product is on the tutorial_product branch.
+https://github.com/cndlhvn/s2s-redux-actions-sample/tree/tutorial_product
 # Getting start
 
 Run this command to isntall libs.
