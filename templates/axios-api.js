@@ -1,1 +1,1 @@
-import axios from "./config"
+import axios from "../axiosConfig"

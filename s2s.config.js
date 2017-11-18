@@ -38,6 +38,12 @@ module.exports = {
     {
       test: /src\/api\/(?!.*index).*\.js/,
       plugin: ['s2s-axios-api']
+    },
+    {
+      test: /src\/api\/(?!.*index).*\.js/,
+      output: "index.js",
+      plugin: ['s2s-axios-api-root',
+      { input: 'src/api/*.js', output: "src/api/index.js" }]
     }
   ],
   templates: [

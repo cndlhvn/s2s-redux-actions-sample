@@ -1,7 +1,5 @@
-import * as coins from './coins'
-
+import * as coins from "./coins";
 const api = {
   ...coins
-}
-
-export default api
+};
+export default api;
