@@ -5,7 +5,7 @@ module.exports = {
   plugins: [
     {
       test: /src\/actions\/(?!.*index).*\.js/,
-      plugin: ['s2s-redux-actions']
+      plugin: ['s2s-redux-actions', {autocomplete: false}]
     },
     {
       test: /src\/actions\/(?!.*index).*\.js/,
@@ -44,6 +44,10 @@ module.exports = {
       output: "index.js",
       plugin: ['s2s-axios-api-root',
       { input: 'src/api/*.js', output: "src/api/index.js" }]
+    },
+    {
+      test: /src\/builders\/.*\.js/,
+      plugin: ['s2s-action-builders']
     }
   ],
   templates: [
