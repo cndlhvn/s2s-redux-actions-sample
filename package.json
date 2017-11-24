@@ -21,6 +21,7 @@
     "babel-plugin-s2s-axios-api": "^0.0.1",
     "babel-plugin-s2s-axios-api-root": "^0.0.1",
     "babel-plugin-s2s-redux-actions": "^0.0.4",
+    "babel-plugin-s2s-redux-actions-manager": "^0.0.1",
     "babel-plugin-s2s-redux-actions-reducers": "^0.0.4",
     "babel-plugin-s2s-redux-actions-reducers-root": "^0.0.3",
     "babel-plugin-s2s-redux-actions-root": "^0.0.2",
