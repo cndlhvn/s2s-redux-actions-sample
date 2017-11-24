@@ -680,9 +680,9 @@ babel-plugin-s2s-redux-actions-reducers-root@^0.0.3:
     globby "^6.1.0"
     s2s-utils "^0.5.0"
 
-babel-plugin-s2s-redux-actions-reducers@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/babel-plugin-s2s-redux-actions-reducers/-/babel-plugin-s2s-redux-actions-reducers-0.0.4.tgz#4f2508301ad7b40813bce38bc09355c9c7c90d82"
+babel-plugin-s2s-redux-actions-reducers@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/babel-plugin-s2s-redux-actions-reducers/-/babel-plugin-s2s-redux-actions-reducers-0.0.5.tgz#de57dbf24961b4008826d27a80f9ed4d13108ab3"
   dependencies:
     babel-plugin-syntax-object-rest-spread "^6.13.0"
     babel-preset-es2015 "^6.24.1"
