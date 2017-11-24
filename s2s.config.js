@@ -48,6 +48,11 @@ module.exports = {
     {
       test: /src\/builders\/.*\.js/,
       plugin: ['s2s-action-builders']
+    },
+    {
+      test: /src\/builders\/.*\.js/,
+      plugin: ['s2s-redux-actions-manager',
+      { input: 'src/builders/*.js', output: "src/actions/*.js" }]
     }
   ],
   templates: [
