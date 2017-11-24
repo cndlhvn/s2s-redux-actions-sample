@@ -16,7 +16,7 @@ module.exports = {
     {
       test: /src\/reducers\/(?!.*index).*\.js/,
       handler: handlerBabelSpread,
-      plugin: ['s2s-redux-actions-reducers']
+      plugin: ['s2s-redux-actions-reducers', {autocomplete: false}]
      },
      {
        test: /src\/reducers\/(?!.*index).*\.js/,
@@ -53,6 +53,11 @@ module.exports = {
       test: /src\/builders\/.*\.js/,
       plugin: ['s2s-redux-actions-manager',
       { input: 'src/builders/*.js', output: "src/actions/*.js" }]
+    },
+    {
+      test: /src\/builders\/.*\.js/,
+      plugin: ['s2s-redux-actions-reducers-manager',
+      { input: 'src/builders/*.js', output: "src/reducers/*.js" }]
     }
   ],
   templates: [
