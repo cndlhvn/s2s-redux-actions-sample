@@ -719,6 +719,17 @@ babel-plugin-s2s-redux-actions@^0.0.4:
     lodash.snakecase "^4.1.1"
     s2s-utils "^0.4.2"
 
+babel-plugin-s2s-redux-sagas-manager@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-s2s-redux-sagas-manager/-/babel-plugin-s2s-redux-sagas-manager-0.0.1.tgz#66767a4a6d89546644b8bbdce6f8e2f3635a96d9"
+  dependencies:
+    babel-file "^1.0.2"
+    babel-generator "^6.26.0"
+    babel-preset-es2015 "^6.24.1"
+    babel-types "^6.26.0"
+    globby "^7.1.1"
+    s2s-utils "^0.5.0"
+
 babel-plugin-s2s-redux-sagas-root@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/babel-plugin-s2s-redux-sagas-root/-/babel-plugin-s2s-redux-sagas-root-0.0.2.tgz#b2ed666ae4ec1e250bfc607ec7e49b23d88ee895"
@@ -3096,6 +3107,17 @@ globby@^6.1.0:
 globby@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/globby/-/globby-7.0.0.tgz#eceef117ab948f394e85a0729bf5b96348958a84"
+  dependencies:
+    array-union "^1.0.1"
+    dir-glob "^2.0.0"
+    glob "^7.1.2"
+    ignore "^3.3.5"
+    pify "^3.0.0"
+    slash "^1.0.0"
+
+globby@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/globby/-/globby-7.1.1.tgz#fb2ccff9401f8600945dfada97440cca972b8680"
   dependencies:
     array-union "^1.0.1"
     dir-glob "^2.0.0"
