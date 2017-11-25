@@ -63,6 +63,11 @@ module.exports = {
       test: /src\/builders\/.*\.js/,
       plugin: ['s2s-redux-sagas-manager',
       { input: 'src/builders/*.js', output: "src/sagas/*.js" }]
+    },
+    {
+      test: /src\/builders\/.*\.js/,
+      plugin: ['s2s-axios-api-manager',
+      { input: 'src/builders/*.js', output: "src/api/*.js" }]
     }
   ],
   templates: [

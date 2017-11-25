@@ -644,6 +644,17 @@ babel-plugin-s2s-action-builders@^0.0.2:
     babel-types "^6.26.0"
     s2s-utils "^0.5.0"
 
+babel-plugin-s2s-axios-api-manager@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-s2s-axios-api-manager/-/babel-plugin-s2s-axios-api-manager-0.0.1.tgz#7599c44dc5f70bf7237dac8b2a7617a38fe7e9de"
+  dependencies:
+    babel-file "^1.0.2"
+    babel-generator "^6.26.0"
+    babel-preset-es2015 "^6.24.1"
+    babel-types "^6.26.0"
+    globby "^7.1.1"
+    s2s-utils "^0.5.0"
+
 babel-plugin-s2s-axios-api-root@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-s2s-axios-api-root/-/babel-plugin-s2s-axios-api-root-0.0.1.tgz#881393bb8c3dbed46db4ac098c40640403bec0c3"
