@@ -58,6 +58,11 @@ module.exports = {
       test: /src\/builders\/.*\.js/,
       plugin: ['s2s-redux-actions-reducers-manager',
       { input: 'src/builders/*.js', output: "src/reducers/*.js" }]
+    },
+    {
+      test: /src\/builders\/.*\.js/,
+      plugin: ['s2s-redux-sagas-manager',
+      { input: 'src/builders/*.js', output: "src/sagas/*.js" }]
     }
   ],
   templates: [
