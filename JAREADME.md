@@ -27,23 +27,12 @@ $ yarn run s2s
 Reactサーバが起動するとブラウザが開きます。 \
 公開された暗号通貨のAPIサーバから取ってきた情報が表示されます。
 
+# 使い方
 
-# Redux Actions Manager pluginを使った開発
+チュートリアルを飛ばして、具体的なRedux Actions pluginの使い方を知りたい方は \
+以下のリンクから Redux Actions Manager pluginを使った開発の仕方を見てください。
 
-## Manager pluginとは
-この章はできればチュートリアルをやってから見てもらうと、より解りやすくなると思います。
-
-次の章に書かれているチュートリアル見てもらえると分かる様に、React Reduxアプリケーションは共通するものがあります。
-
- 1. 作られるファイル次の章に書かれている`actions, reducers, sagas, api`フォルダで共通である
- 2. アクション名を`actions, reducers, sagas, api`内のファイルが共有している。
-
-Managerはこれらをうまい具合に管理します。
-
-Managerは`builders`フォルダにファイルを作成したら、`actions, reducers, sagas, api`フォルダの中に自動的に同一名のファイルを生成します。
-
-同時に、Managerは`builders/*.js`に書かれたアクション名を管理し、自動的に`actions, reducers, sagas, api`と同期します。
-
+- [Redux Actions Manager pluginを使った開発](#redux-actions-manager-pluginを使った開発)
 
 # チュートリアル
 
@@ -90,6 +79,15 @@ https://qiita.com/mpyw/items/a816c6380219b1d5a3bf
 
 
 それでは仮想通貨の詳細情報を表示するCoinsShow containerを作りましょう。
+
+### 準備
+トップディレクトリに置かれている`s2s.config.js`はmanager pluginを使った設定になっているので、チュートリアル用に変更します。 \
+チュートリアル用のs2s設定ファイルは`s2s.tutorial.config.js`です。
+
+```
+$ mv s2s.config.js s2s.main.config.js
+$ mv s2s.tutorial.config.js s2s.config.js
+```
 
 ### Redux Actionsの作成
 
@@ -500,3 +498,69 @@ CoinsIndexにCoinsShowへのリンクがありそれをクリックすると
 
 チュートリアルは以上になります。React Redux全体像が分かったでしょうか？ \
 さらに使いやすく、より早いコーディングができるのが上のマネージャーを使ったReact Redux開発なので、そちらもぜひ挑戦してください。
+
+
+# Redux Actions Manager pluginを使った開発
+
+## Manager pluginとは
+この章はできればチュートリアルをやってから見てもらうと、より解りやすくなると思います。
+
+チュートリアル見てもらえると分かる様に、React Reduxアプリケーションは共通するものがあります。
+
+ 1. ファイル名が`actions, reducers, sagas, api`フォルダで共通である
+ 2. アクション名を`actions, reducers, sagas, api`が共有している
+
+Managerはこれらをうまい具合に管理します。
+
+Managerは`builders`フォルダにファイルを作成したら、`actions, reducers, sagas, api`フォルダの中に自動的に同一名のファイルを生成します。
+
+同時に、Managerは`builders/*.js`に書かれたアクション名を管理し、自動的に`actions, reducers, sagas, api`と同期します。
+
+
+## 準備する(チュートリアルをやった方)
+
+チュートリアルをやった方はせっかくコードを作成したので、それを取って置くために、git stashしましょう。
+
+```
+$ git add .
+$ git stash save "tutorial"
+```
+s2sサーバを再起動します。
+
+```
+$ yarn run s2s
+```
+
+## Buildersファイルの作成
+
+それでは実際に作っていきましょう。`src/builders`に｀coin.js`を作りましょう。
+どうでしょうか、`actions, reducers, sagas, api`フォルダに`coin.js`が作られたでしょう。
+続いて、`src/builders/coin.js`に以下を書き込みましょう。
+
+`src/builders/coin.js`
+```js
+getCoinRequest
+```
+保存すると、以下のように展開されます。
+
+```js
+let getCoinRequest;
+let getCoinSuccess;
+let getCoinFailure;
+```
+
+同時に、`actions, reducers, sagas, api`フォルダの全てのcoin.jsに作成したアクション名が挿入されます。
+確認して見てください。
+
+もちろんアクションを削除することもできます。
+試しに、`src/builders/coin.js`に書かれているアクション名を全て削除して、保存しましょう。
+
+他の全てのファイルに書かれているアクション名も削除されると思います。
+
+ただし、`src/builders`にあるファイルを削除しても、`actions, reducers, sagas, api`にある同名のファイルは安全のため削除しないようになっています。
+
+manager pluginはアクション名の有無だけを管理するので、その中にどんなコードを書いてもバグることは無いと思います。\
+あとは、上のチュートリアルと同じことをすれば仮想通貨の詳細情報のContainerが作れるでしょう。
+
+バグや質問などがありましたら、githubのissueに投げてください。
+良いReact Reduxコーディングを!
