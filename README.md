@@ -1,6 +1,10 @@
+
 # About
 This repository is a sample project of s2s Redux Actions.
 I will show you how to develop React Redux application using s2s completion.
+
+Japanese here \
+[日本語](./JAREADME.md)
 
 # Getting start
 
@@ -24,6 +28,13 @@ $ yarn run s2s
 ```
 When the React server starts up, the browser opens. \
 Information pulled from the API server of the public crypto currency is displayed.
+
+
+# How to use
+
+If you want to skip the tutorial and learn how to use the specific Redux Actions plugin, please see how to develop using the Redux Actions Manager plugin from the link.
+
+- [Development using Redux Actions Manager plugin](#development-using-redux-actions-manager-plugin)
 
 # Tutrial
 
@@ -67,6 +78,15 @@ The bottom image is the actual structure of CoinIndex.
 ![react-redux](docs/CoinsIndex.png)
 
 Then let's create CoinsShow container which displays the detail information of crypto currency.
+
+### Preparation
+Since `s2s.config.js` in the top directory is set up using the manager plugin, change it for the tutorial. \
+The s2s configuration file for the tutorial is `s2s.tutorial.config.js`.
+
+```
+$ mv s2s.config.js s2s.main.config.js
+$ mv s2s.tutorial.config.js s2s.config.js
+```
 
 ### Create Redux Actions
 
@@ -483,4 +503,70 @@ The tutorial is over. Did you understand the whole structure of React Redux? \
 
 If you create React Redux application using the manager plugins, you can write code much more easier and faster than this tutorial. so please challenge that too.
 
-Thank you.
+
+# Development using Redux Actions Manager plugin
+
+## About Manager plugin
+This chapter will make it easier to understand if you try to read a tutorial and then look it up.
+
+As you can see from the tutorial, there are some shared things in React Redux application.
+
+ 1. The file name is common in the `actions, reducers, sagas, api` folders
+ 2. Action names are shared in the `actions, reducers, sagas, api` folders
+
+The Manager plugin manages these in a nice way.
+
+When you create a file in the `builders` folder, the manager plugin creates a file with the same name in the` actions, reducers, sagas, api` folders.
+
+At the same time, manager plugin manages the action name written in `builders/*.js` and automatically synchronizes with` actions, reducers, sagas, api` files.
+
+
+## Preparing (For who did the tutorial)
+
+The coder who did the tutorial, let's do a git stash to keep code.
+
+```
+$ git add .
+$ git stash save "tutorial"
+```
+Restart s2s server.
+
+```
+$ yarn run s2s
+```
+
+## Create builders files
+
+Create a `coin.js` in the `src/builders` folder.
+
+How about that, `coin.js` would have been created in the each ` actions, reducers, sagas, api` folders.
+Next write this code in the `src/builders/coin.js`
+
+`src/builders/coin.js`
+```js
+getCoinRequest
+```
+Save it and s2s expands like this.
+
+```js
+let getCoinRequest;
+let getCoinSuccess;
+let getCoinFailure;
+```
+
+At the same time, the created action name is inserted in all coin.js of the `actions, reducers, sagas, api` folders.
+Please check it out.
+
+
+Of course you can also delete actions. \
+Let's try deleting all the action names written in `src/builders/coin.js` and save it.
+
+I think that the action names written in all other `coin.js` will be deleted.
+
+However, even if you delete the file in `src/builders`, files of the same name in`actions, reducers, sagas, api` are not deleted for safety.
+
+The manager plugin manages only the existence or not of the action name. \
+After that, if you do the same thing as the above tutorial, you will be able to create Container for detail information of crypto currency.
+
+If you have any bugs or questions, please throw to github's issue.
+Good React Redux coding!
