@@ -1,48 +1,86 @@
 # About
-This is a smaple s2s redux actions project.
+This repository is a sample project of s2s Redux Actions.
+I will show you how to develop React Redux application using s2s completion.
 
-And This is a tutorial how to use redux actions s2s. \
-This tutorial will explain how to create redux application with s2s.
-
-This repository contains a tutorial and its finished product is on the tutorial_product branch.
-https://github.com/cndlhvn/s2s-redux-actions-sample/tree/tutorial_product
 # Getting start
 
-Run this command to isntall libs.
+Install the library with this command.
 
 ```
 $ yarn
 ```
 
-# Start servers
+# Launch Server
+This application has two servers. React server and s2s server. \
+Let's launch the main React server first.
 
-a main react server build by create-react-app
 ```
 $ yarn start
 ```
-In other terminal window, you run a s2s server
+Launch the s2s server in another terminal window.
 
 ```
 $ yarn run s2s
 ```
+When the React server starts up, the browser opens. \
+Information pulled from the API server of the public crypto currency is displayed.
 
-The server launches react application in your browser. \
-You can see crypto currencies which is pulled from public API server.
+# Tutrial
 
-# Tutorial
-So let's create a CoinsShow container and so on.
+## Abstract of Tutorial
+This tutorial aims to create web services using s2s-redux-actions. \
+This web service gets data from api server that is publishing cryptocurrency information and display it.
+A list of cryptocurrencies has already been completed. You can check with the below command.
 
-## Create Redux Actions
+```
+yarn start
+```
+This tutorial introduces the flow of creating a crypto currency detail page. \
+I hope you enjoy reading and reading.
 
-First you create a `src/actions/coin.js` as a practice.
+## Over the past of React Redux
+Until now, React Redux application has too many file creation and configuration descriptions. \
+I was looking for github to see if I can simplify this troublesome coding, and I went around looking at Medium, but there was nothing that could be greatly improved.
 
-And you can see wonderful s2s function. \
-The `coin.js` is inserted this code `import { createAction } from 'redux-actions'` automatically.
+As a result, React Redux had a lot of preparation to write the application, so you could hardly work on creating and designing Container and Component.
 
-It takes from templates folder.
+Of course it is possible to do it to spend time.
 
-Then you type `getCoinRequest` and save the file. \
-S2s expands the code like this.
+However, for the programer who is coding Rails, the React Redux coding which is far from the Rails philosophy CoC（Convention over Configuration）and DRY（Don't Repeat Yourself) was painful.
+
+Meanwhile, s2s deployed, the possibility of coding that does not rely on boilerplate or copy and paste has been becoming.
+
+Since there was no plug-in that supports redux-actions in the original s2s, I made plugins.
+
+This introduces usage of s2s and explains how the React Redux framework works.
+
+
+### Structure of React Redux
+
+Applications are built based on what is written in this article.
+https://qiita.com/mpyw/items/a816c6380219b1d5a3bf
+
+![react-redux](docs/react-redux.png)
+
+The bottom image is the actual structure of CoinIndex.
+
+![react-redux](docs/CoinsIndex.png)
+
+Then let's create CoinsShow container which displays the detail information of crypto currency.
+
+### Create Redux Actions
+
+First we will create redux actions. Create a `coin.js` file in the `src/actions` folder. \
+s2s template function runs and inserts template code of redux actions into `coin.js`.
+
+
+```js
+import { createAction } from 'redux-actions'
+```
+This template is `redux-action.js` in the `templates` folder of top directory.
+
+Open the file, write `getCoinRequest` and save it. \
+s2s expands code like this.
 
 ```js
 import { createAction } from "redux-actions";
@@ -51,20 +89,35 @@ export const getCoinRequest = createAction("GET_COIN_REQUEST");
 export const getCoinSuccess = createAction("GET_COIN_SUCCESS");
 export const getCoinFailure = createAction("GET_COIN_FAILURE");
 ```
+The s2s plugin that expands code is s2s-redux-actions.
 
-Also s2s inserts `coin.js` file path into `src/actions/index.js` \
-s2s is watching it. So you never mind `src/actions/index.js`.
+#### s2s-redux-actions-root
 
+As soon as the file is changed under `src/actions`, s2s-redux-actions-root is run and `coin.js` path is inserted in `src/actions/index.js`.
+
+In other words, since s2s is watching the files in the actions folder, you don't have to add the code every time you create a file in `src/actions/index.js`.
+
+`src/actions/index.js`
 ```js
 export * from "./coin";
 export * from "./coins";
 ```
 
-## Create Redux Actions Reducers
+Now we have created reducex actions
 
-Next you create a `src/reducers/coin.js`.
+![action](docs/action.png)
 
-s2s creates a reducer file template.
+### Create Redux Actions Reducers
+
+
+Next, let's create a Reducer that generates State based on Action.
+
+Reducer is connected with the action created before as a one-to-one. When Action is called in Container, State written in Reducer is created and passed to Container.
+
+As you can also see a conceptual diagram, rather than updating State, it adopts a method to create a new State.
+
+Create a `coin.js` in the `src/reducers` folder. \
+It's a same as actions, template will be expanded.
 
 ```js
 import { handleActions } from 'redux-actions'
@@ -77,8 +130,16 @@ export default handleActions(
   initialState
 )
 ```
-You type `getCoinRequest` in the blank object within `export default handleActions({})`. \
-Save it. S2s expands the code like this.
+It is a bit hard to see, but write `getCoinRequest` in` {} `of handleActions and save it.
+
+```js  
+export default handleActions(
+  {getCoinRequest},
+  initialState
+)
+```
+
+S2s will expand the code.
 
 ```js
 import { handleActions } from "redux-actions";
@@ -101,8 +162,14 @@ export default handleActions(
   initialState
 );
 ```
-This is the final coin.js reducer file. Please update your code.
-`initialState` belongs to public API returns value.
+
+We change the code.
+Write the default state of `coin` in` initialState`. \
+Next, add `coin: action.payload [0]` to `action.getCoinSuccess`. \
+This is a process to push the data returned by saga into the coin state. \
+The reason for specifying the zeroth of the array is that this crypto currency API returns data in an array even though it gets information on one crypto currency.
+
+
 ```js
 import { handleActions } from "redux-actions";
 import * as actions from "../actions";
@@ -144,11 +211,25 @@ export default handleActions(
 );
 ```
 
-## Create Sagas
+You made a green Reducer.
 
-You create a `src/sagas/coin.js`.
+![reducer](docs/reducer.png)
 
-s2s creates a saga file template.
+## Create Redux Sagas
+
+Next time we will create Saga. \
+Saga's role is asynchronous processing of redux-actions. \
+In principle, Reducer should not write a program whose value changes depending on cases. \
+Saga will come between Action and Reducer to solve this problem. \
+
+Basically there are three things to write in Saga.
+
+1. Which action triggers saga when called
+2. Which API endpoint to throw HTTP request toward
+3. How to change the state of the Reducer when the request succeeds or fails.
+
+Create a `coin.js` in the `src/sagas` folder. \
+S2s expands the template of saga.
 
 ```js
 import { put, call,takeLatest } from 'redux-saga/effects';
@@ -157,8 +238,21 @@ import api from '../api';
 
 export default [];
 ```
-You type `getCoinRequest` before the place of `export default [];` and save it. \
-S2s expands the code like this.
+
+Let's write `getCoinRequest` before `export default [];` and save it.
+
+
+```js
+import { put, call,takeLatest } from 'redux-saga/effects';
+import * as actions from '../actions';
+import api from '../api';
+
+getCoinRequest
+
+export default [];
+```
+
+S2s will automatically expand the code.
 
 ```js
 import { put, call, takeLatest } from "redux-saga/effects";
@@ -178,18 +272,26 @@ export default [
   takeLatest(actions.getCoinRequest.toString(), handleGetCoinRequest)
 ];
 ```
+
+You made purple Saga.
+
+![saga](docs/saga.png)
+
 ## Create Axios api
 
-You create a `src/api/coin.js`.
+Axios api is the place to manage API endpoints. \
+You will write where the server URL and what kind of HTTP request. \
+In this tutorial, axios uses the common setting code in the src folder and imports it.
 
-s2s creates a axios api file template.
+Create a `coin.js` in the `src/api` folder. \
+s2s inserts the axios api template.
 
 ```js
 import axios from "../axiosConfig"
 ```
 
-You type `getCoinRequest` and save it. \
-S2s expands the code like this.
+Write `getCoinRequest` there and save it. \
+s2s expands the below code.
 
 ```js
 import axios from "../axiosConfig";
@@ -197,22 +299,29 @@ import axios from "../axiosConfig";
 export const getCoinRequest = config => axios.get(``, config);
 ```
 
-This is the last coin.js api file. Please update your code.
+Edit it so that the correct endpoint of the crypto currency can get.
+
 ```js
 import axios from "../axiosConfig";
 
 export const getCoinRequest = (id, config) =>
   axios.get(`/v1/ticker/${id}/`, config);
+
 ```
+You create a red Axios Api
 
-## Create CoinsShow Container
+![axios](docs/axios.png)
 
-Ok you prepared to use redux acitons in containers. \
-Let's create a page that display a detail information of coin.
+Then you had tried almost all of the Redux Actions S2S framework.
+Your rest working is to write a Container.
 
-You create a `src/containers/CoinsShow.js`.
+## Create a CoinsShow Container
 
-s2s creates a container file template.
+We will create a Container that displays detail information of crypto currency using the Redux Action we created. \
+Create a `CoinsShow.js` in the `src/containers` folder.
+
+Since we are using the template function of s2s, the below template code inserts into CoinsShow.js.
+
 
 ```js
 import React, { Component } from 'react'
@@ -240,7 +349,8 @@ const mapDispatchToProps = dispatch => bindActionCreators(
 export default connect(mapStateToProps, mapDispatchToProps)(ClassNameHere)
 ```
 
-Then please edit this file like this.
+Please change `ClassNameHere` to `CoinsShow`。 \
+And update like this.
 
 ```js
 import React, { Component } from 'react'
@@ -295,7 +405,6 @@ class CoinsShow extends Component{
 
 CoinsShow.propTypes = {}
 
-
 const Wrapper = styled.div`
   margin: 25px 40px;
 `
@@ -314,30 +423,37 @@ const mapDispatchToProps = dispatch => bindActionCreators(
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinsShow)
 ```
-## Router setting
-Finally you set up routing.
-### CoinsIndex
-Open the `src/containers/CoinsIndex.jsx`
+What you're doing is a simple React Redux basic program.
+You made a light blue Container.
 
-import react-router lib.
+![container](docs/container.png)
+
+## Router setting
+
+Finally, set up the React Router.
+
+Open the `src/containers/CoinsIndex.jsx` and import react-router library.
 
 ```js
 import { Link } from 'react-router';
 ```
 
-In `coins.map()` from
+Edit the container's jsx from
 
 ```js
 <td>{name}</td>
 ```
+
 to
+
 ```js
 <td><Link to={`/coins/${id}`}>{name}</Link></td>
 ```
 
-### routes.jsx
-Open the `src/routes.jsx`.
-And update like this.
+You created a link to move from CoinsIndex to CoinsShow.
+
+Open the `src/routes.jsx` and update it.
+
 ```js
 import React from 'react'
 import { Route, IndexRoute } from 'react-router';
@@ -354,7 +470,17 @@ export default (
 )
 ```
 
-That's all. Yeah! \
-Please check it in your browser. \
+After save the file, access http://localhost:3000 with browser. \
+CoinsIndex has a link to CoinsShow and clicking on it
 
-Thank you for reading this tutorial.
+![coinsindex](docs/coinsindex.jpg)
+
+Detail information of crypto currency is displayed.
+
+![coinsshow](docs/bitcoin.jpg)
+
+The tutorial is over. Did you understand the whole structure of React Redux? \
+
+If you create React Redux application using the manager plugins, you can write code much more easier and faster than this tutorial. so please challenge that too.
+
+Thank you.
