@@ -361,10 +361,9 @@ ClassNameHere.propTypes = {}
 const mapStateToProps = (state, ownProps) => {
   return {}
 }
-const mapDispatchToProps = dispatch => bindActionCreators(
-  {},
-  dispatch
-)
+const mapDispatchToProps = dispatch => bindActionCreators({
+
+},dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClassNameHere)
 ```
@@ -377,7 +376,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../actions'
+import {} from '../actions'
 import styled from 'styled-components'
 import { Link} from 'react-router'
 import {Breadcrumb,ListGroup,ListGroupItem,PageHeader,Panel} from 'react-bootstrap';
@@ -434,12 +433,9 @@ const mapStateToProps = (state, ownProps) => {
     coin: state.coin.coin
   }
 }
-const mapDispatchToProps = dispatch => bindActionCreators(
-  {
-    getCoinRequest: bindActionCreators( actions.getCoinRequest, dispatch)
-  },
-  dispatch
-)
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getCoinRequest
+  },dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinsShow)
 ```

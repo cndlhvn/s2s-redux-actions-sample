@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
 import styled from 'styled-components'
-import * as actions from '../actions'
+import { getCoinsRequest } from '../actions'
 
 class CoinsIndex extends Component{
   componentDidMount() {
@@ -58,11 +58,9 @@ const mapStateToProps = (state, ownProps) => {
     coins: state.coins
   }
 }
-const mapDispatchToProps = dispatch => bindActionCreators(
-  {
-    getCoinsRequest: bindActionCreators( actions.getCoinsRequest, dispatch)
-  },
-  dispatch
-)
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getCoinsRequest
+},dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinsIndex)
