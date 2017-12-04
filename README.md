@@ -73,7 +73,7 @@ https://qiita.com/mpyw/items/a816c6380219b1d5a3bf
 
 ![react-redux](docs/react-redux.png)
 
-The bottom image is the actual structure of CoinIndex.
+The bottom image is the actual structure of CoinsIndex.
 
 ![react-redux](docs/CoinsIndex.png)
 
@@ -376,7 +376,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {} from '../actions'
+import { getCoinRequest } from '../actions'
 import styled from 'styled-components'
 import { Link} from 'react-router'
 import {Breadcrumb,ListGroup,ListGroupItem,PageHeader,Panel} from 'react-bootstrap';
