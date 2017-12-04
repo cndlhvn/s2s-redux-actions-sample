@@ -356,10 +356,9 @@ ClassNameHere.propTypes = {}
 const mapStateToProps = (state, ownProps) => {
   return {}
 }
-const mapDispatchToProps = dispatch => bindActionCreators(
-  {},
-  dispatch
-)
+const mapDispatchToProps = dispatch => bindActionCreators({
+
+},dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClassNameHere)
 ```
@@ -429,12 +428,10 @@ const mapStateToProps = (state, ownProps) => {
     coin: state.coin.coin
   }
 }
-const mapDispatchToProps = dispatch => bindActionCreators(
-  {
-    getCoinRequest: bindActionCreators( actions.getCoinRequest, dispatch)
-  },
-  dispatch
-)
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getCoinRequest
+  },dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinsShow)
 ```
