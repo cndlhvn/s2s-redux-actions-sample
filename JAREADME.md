@@ -88,6 +88,11 @@ https://qiita.com/mpyw/items/a816c6380219b1d5a3bf
 $ mv s2s.config.js s2s.main.config.js
 $ mv s2s.tutorial.config.js s2s.config.js
 ```
+そしたら、s2sサーバを再起動します。
+
+```
+$ yarn run s2s
+```
 
 ### Redux Actionsの作成
 
