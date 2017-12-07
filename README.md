@@ -88,6 +88,11 @@ $ mv s2s.config.js s2s.main.config.js
 $ mv s2s.tutorial.config.js s2s.config.js
 ```
 
+Then restart s2s server.
+```
+$ yarn run s2s
+```
+
 ### Create Redux Actions
 
 First we will create redux actions. Create a `coin.js` file in the `src/actions` folder. \
