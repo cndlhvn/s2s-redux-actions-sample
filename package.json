@@ -32,7 +32,7 @@
     "babel-plugin-s2s-redux-sagas-root": "^0.0.2",
     "babel-plugin-syntax-object-rest-spread": "^6.13.0",
     "react-scripts": "1.0.17",
-    "s2s": "^0.13.0",
+    "s2s": "^0.15.0",
     "s2s-handler-babel-object-rest-spread": "^0.0.1"
   },
   "scripts": {
