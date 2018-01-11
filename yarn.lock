@@ -6033,9 +6033,9 @@ rx-lite@*, rx-lite@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
 
-s2s-handler-babel-object-rest-spread@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/s2s-handler-babel-object-rest-spread/-/s2s-handler-babel-object-rest-spread-0.0.2.tgz#d2ef3014c33ef7bfb8a25abe1cc9993690b539de"
+s2s-handler-babel-object-rest-spread@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/s2s-handler-babel-object-rest-spread/-/s2s-handler-babel-object-rest-spread-0.0.3.tgz#24fce01aa670e568aa77a9d661efe7d640ee1978"
   dependencies:
     babel-core "^6.26.0"
     babel-plugin-transform-object-rest-spread "^6.26.0"
